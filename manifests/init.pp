@@ -1,9 +1,8 @@
-
 class statsd (
-	$graphite_host = "localhost",
-	$graphite_user = "root",
-	$graphite_port = 2003,
-	$statsd_port   = 8125
+  $graphite_host = "localhost",
+  $graphite_user = "root",
+  $graphite_port = 2003,
+  $statsd_port   = 8125
 ) {
 
   vcsrepo { '/usr/share/statsd' :
@@ -12,25 +11,23 @@ class statsd (
     source   => 'git://github.com/etsy/statsd.git',
   }
 
-	file { "/etc/statsd":
-		ensure  => directory
-	}
+  file { "/etc/statsd":
+    ensure  => directory
+  }
 
-	file { "/etc/statsd/rdioConfig.js":
-		content => template("statsd/statsd.conf.erb"),
-		require => File["/etc/statsd"]
-	}
+  file { "/etc/statsd/rdioConfig.js":
+    content => template("statsd/statsd.conf.erb"),
+    require => File["/etc/statsd"]
+  }
 
-	file { "/etc/init/statsd.conf":
-		content => template("statsd/statsd.upstart.erb"),
-		require => [
-			File["/etc/statsd/rdioConfig.js"]
-		]
-	}
+  file { "/etc/init/statsd.conf":
+    content => template("statsd/statsd.upstart.erb"),
+    require => File["/etc/statsd/rdioConfig.js"]
+  }
 
-	service { "statsd":
-		provider => "upstart",
-    	enable   => true,
-		require  => File["/etc/init/statsd.conf"]
-	}
+  service { "statsd":
+    provider => "upstart",
+    enable   => true,
+    require  => File["/etc/init/statsd.conf"]
+  }
 }
