@@ -1,0 +1,33 @@
+{
+  "dependencies": [
+    {
+      "name": "puppetlabs-vcsrepo"
+    },
+    {
+      "name": "puppetlabs-nodejs"
+    }
+  ],
+  "summary": "StatsD Puppet module",
+  "author": "Justin Rainbow",
+  "description": "StatsD Puppet module",
+  "license": "UNKNOWN",
+  "types": [
+
+  ],
+  "project_page": "https://github.com/justinrainbow/puppet-statsd",
+  "checksums": {
+    "spec/spec_helper.rb": "ca19ec4f451ebc7fdb035b52eae6e909",
+    "templates/statsd.conf.erb": "9fbfe2fa2ecabb220eec383112c4220c",
+    "README.md": "45f57eb4c75c45d2217c1f134be3b600",
+    "README": "57e086c381a48e90fac867e62b27ea91",
+    "tests/init.pp": "fb92e69fd572dc3cc08dd325e58cafa5",
+    "templates/statsd.upstart.erb": "abe43ee80e26ab798200a0cc53c3072d",
+    "spec/spec.opts": "a600ded995d948e393fbe2320ba8e51c",
+    "metadata.json": "d34d0b70aba36510fbc2df4e667479ef",
+    "Modulefile": "fabb8d507e7f421615e763df6bd410af",
+    "manifests/init.pp": "079c359837612a66aa2b377ea2327db2"
+  },
+  "name": "puppet-statsd",
+  "source": "UNKNOWN",
+  "version": "0.0.1"
+}
