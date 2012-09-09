@@ -6,15 +6,11 @@ class statsd (
 	$statsd_port   = 8125
 ) {
 
-    exec { "download_statsd":
-		command => "curl -L https://github.com/etsy/statsd/tarball/master | tar -zx -C /tmp",
-		unless  => "test -d /usr/share/statsd"
-	}
-
-	exec { "install_statsd":
-		command => "mv /tmp/etsy-statsd-* /usr/share/statsd",
-		require => Exec["download_statsd"]
-	}
+  vcsrepo { '/usr/share/statsd' :
+    ensure   => present,
+    provider => git,
+    source   => 'git://github.com/etsy/statsd.git',
+  }
 
 	file { "/etc/statsd":
 		ensure  => directory
