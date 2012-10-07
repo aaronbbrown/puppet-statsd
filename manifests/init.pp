@@ -22,7 +22,7 @@ class statsd (
 
   file { "/etc/init/statsd.conf":
     content => template("statsd/statsd.upstart.erb"),
-    require => File["/etc/statsd/rdioConfig.js"]
+    require => File["/etc/statsd/localConfig.js"]
   }
 
   service { "statsd":
