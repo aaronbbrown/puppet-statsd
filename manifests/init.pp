@@ -35,4 +35,9 @@ class statsd (
   file { "/var/log/statsd" :
     ensure => directory,
   }
+
+  file { '/etc/init.d/statsd' : 
+    ensure => 'link',
+    target => '/lib/init/upstart-job'
+  }
 }
