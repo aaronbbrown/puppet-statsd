@@ -28,6 +28,11 @@ class statsd (
   service { "statsd":
     provider => "upstart",
     enable   => true,
-    require  => File["/etc/init/statsd.conf"]
+    require  => [ File["/etc/init/statsd.conf"], 
+                  File["/var/log/statsd"] ]
+  }
+
+  file { "/var/log/statsd" :
+    ensure => directory,
   }
 }
