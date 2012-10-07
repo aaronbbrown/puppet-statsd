@@ -15,7 +15,7 @@ class statsd (
     ensure  => directory
   }
 
-  file { "/etc/statsd/rdioConfig.js":
+  file { "/etc/statsd/localConfig.js":
     content => template("statsd/statsd.conf.erb"),
     require => File["/etc/statsd"]
   }
